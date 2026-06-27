@@ -2,8 +2,8 @@
 
 **Course:** Full Stack Web Development  
 **Institution:** Kirirom Institute of Technology  
-**Author:** Chanratharo Rath  
-**Collaborator:** Hour-Meng  
+**Authors:** Chanratharo Rath & Eang HourMeng
+
 
 ---
 
