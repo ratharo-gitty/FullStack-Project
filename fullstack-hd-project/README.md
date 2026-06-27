@@ -12,7 +12,7 @@
 
 > **Class assignment — Full Stack Web Development**  
 > Kirirom Institute of Technology · Software Engineering Program  
-> **Author: Chanratharo Rath (`ratharo-gitty`)** · Collaborator: Hour-Meng
+> **Author: Chanratharo Rath (`ratharo-gitty`)** · & Eang HourMeng
 
 </div>
 
