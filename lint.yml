@@ -1,0 +1,78 @@
+name: Validate HTML Files
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Check all HTML pages exist
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify all HTML pages exist
+        run: |
+          PAGES=(
+            "index.html"
+            "Motorcycles.html"
+            "Parts.html"
+            "GoodsGifts.html"
+            "Discover.html"
+          )
+
+          ALL_FOUND=true
+          for page in "${PAGES[@]}"; do
+            if [ ! -f "$page" ]; then
+              echo "❌ Missing: $page"
+              ALL_FOUND=false
+            else
+              echo "✅ Found: $page"
+            fi
+          done
+
+          if [ "$ALL_FOUND" = false ]; then
+            exit 1
+          fi
+
+      - name: Verify CSS file exists
+        run: |
+          if [ ! -f "CustomFonts/custom.css" ]; then
+            echo "❌ Missing: CustomFonts/custom.css"
+            exit 1
+          fi
+          echo "✅ Found: CustomFonts/custom.css"
+
+      - name: Verify Bootstrap version consistency
+        run: |
+          EXPECTED="5.3.8"
+          echo "Checking Bootstrap version is consistent across all HTML files..."
+          for file in *.html; do
+            if grep -q "bootstrap" "$file"; then
+              if grep -q "$EXPECTED" "$file"; then
+                echo "✅ $file — Bootstrap $EXPECTED"
+              else
+                echo "⚠️  $file — Bootstrap version may differ from $EXPECTED"
+              fi
+            fi
+          done
+
+      - name: Check for accidental API keys or secrets
+        run: |
+          echo "Scanning for accidental secrets..."
+          if grep -rni "api_key\|apikey\|secret\|password\|token\|private_key" *.html CustomFonts/ 2>/dev/null; then
+            echo "⚠️  WARNING: Possible sensitive string found above — review before merging"
+          else
+            echo "✅ No secrets found"
+          fi
+
+      - name: Summary
+        run: |
+          echo ""
+          echo "═══════════════════════════════════════════════"
+          echo "  ✅ Full Stack H-D Project — All checks passed"
+          echo "═══════════════════════════════════════════════"
