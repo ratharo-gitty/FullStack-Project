@@ -1,0 +1,431 @@
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url(fonnts.com-225984/fonts/fonnts.com-Franklin_Gothic_ATF_Ult.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --hd-orange: #ff6600;
+  --hd-black: #0a0a0a;
+  --hd-dark: #161616;
+  --hd-gray: #f7f6f7;
+  --hd-muted: #9a9a9a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: "MyCustomFont";
+}
+
+/* ---------- Responsive, auto-scaling titles ---------- */
+.page-title {
+  font-family: "MyCustomFont";
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+.section-title {
+  font-family: "MyCustomFont";
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.section-kicker {
+  color: var(--hd-orange);
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+}
+
+/* ---------- Navbar ---------- */
+.hd-navbar {
+  background-color: var(--hd-black);
+  border-bottom: 3px solid var(--hd-orange);
+}
+
+.hd-navbar .hd-shield {
+  filter: invert(1) brightness(1.6);
+  transition: transform 0.2s ease;
+}
+
+.hd-navbar .navbar-brand:hover .hd-shield {
+  transform: scale(1.05);
+}
+
+.hd-navbar .nav-link {
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  position: relative;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.hd-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.35rem;
+  height: 2px;
+  background: var(--hd-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+/* Spread the nav links across the full bar on desktop */
+@media (min-width: 992px) {
+  .hd-navbar .navbar-nav {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+.hd-navbar .nav-link:hover::after,
+.hd-navbar .nav-link:focus::after {
+  transform: scaleX(1);
+}
+
+.hd-navbar .nav-link:hover {
+  color: var(--hd-orange) !important;
+}
+
+/* ---------- Hero ---------- */
+.hd-hero {
+  position: relative;
+  width: 100%;
+  height: clamp(360px, 70vh, 760px);
+  overflow: hidden;
+}
+
+.hd-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hd-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.hd-hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+  color: #fff;
+}
+
+.hd-hero-content h1 {
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  text-transform: uppercase;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  max-width: 18ch;
+}
+
+.hd-hero-content p {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  max-width: 50ch;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Buttons ---------- */
+.btn-hd {
+  background-color: var(--hd-orange);
+  border: 2px solid var(--hd-orange);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  padding: 0.7rem 1.8rem;
+  transition: all 0.2s ease;
+}
+
+.btn-hd:hover {
+  background-color: #fff;
+  color: var(--hd-black);
+  border-color: #fff;
+}
+
+.btn-hd-outline {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  padding: 0.7rem 1.8rem;
+  transition: all 0.2s ease;
+}
+
+.btn-hd-outline:hover {
+  background-color: #fff;
+  color: var(--hd-black);
+}
+
+.btn-hd-dark {
+  background-color: var(--hd-black);
+  border: 2px solid var(--hd-black);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  padding: 0.6rem 1.6rem;
+  transition: all 0.2s ease;
+}
+
+.btn-hd-dark:hover {
+  background-color: var(--hd-orange);
+  border-color: var(--hd-orange);
+  color: #fff;
+}
+
+/* ---------- Cards ---------- */
+.hd-card {
+  background-color: var(--hd-gray);
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hd-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hd-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hd-card .card-title {
+  font-family: Impact, "MyCustomFont", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.hd-price {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* ---------- Category pills ---------- */
+.hd-category-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.hd-category-pill {
+  border: 2px solid var(--hd-black);
+  color: var(--hd-black);
+  background: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.hd-category-pill:hover,
+.hd-category-pill.active {
+  background: var(--hd-black);
+  color: #fff;
+}
+
+/* ---------- Swiper (centered carousel) ---------- */
+.hd-swiper {
+  width: 100%;
+  padding: 1.5rem 0 3rem;
+  --swiper-theme-color: var(--hd-orange);
+  --swiper-navigation-size: 28px;
+}
+
+.hd-swiper swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 0.45;
+  transform: scale(0.9);
+}
+
+.hd-swiper swiper-slide.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hd-slide-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.hd-slide-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+/* ---------- Section helpers ---------- */
+.hd-divider {
+  border: 0;
+  border-top: 2px solid #e5e5e5;
+}
+
+.hd-band {
+  background: var(--hd-black);
+  color: #fff;
+}
+
+.hd-feature-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.hd-feature-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.hd-feature-overlay:hover img {
+  transform: scale(1.05);
+}
+
+.hd-feature-overlay .hd-feature-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+  color: #fff;
+}
+
+/* ---------- Footer ---------- */
+.hd-footer {
+  background-color: var(--hd-black);
+  color: #ccc;
+}
+
+.hd-footer .hd-footer-title {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hd-footer .hd-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hd-footer .hd-footer-links li {
+  margin-bottom: 0.55rem;
+}
+
+.hd-footer .hd-footer-links a,
+.hd-footer address a {
+  color: #b8b8b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.hd-footer .hd-footer-links a:hover,
+.hd-footer address a:hover {
+  color: var(--hd-orange);
+}
+
+.hd-footer address {
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.hd-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.hd-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #444;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.hd-social a:hover {
+  background: var(--hd-orange);
+  border-color: var(--hd-orange);
+}
+
+.hd-footer-bottom {
+  background-color: #000;
+  border-top: 1px solid #222;
+  font-size: 0.8rem;
+}
+
+.hd-footer-bottom a {
+  color: var(--hd-muted);
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.hd-footer-bottom a:hover {
+  color: #fff;
+}
+
+@media (max-width: 575.98px) {
+  .hd-footer-bottom a {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
